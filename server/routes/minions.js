@@ -1,13 +1,20 @@
 const express = require('express'); 
 
 
-const { getMinions, createMinion, getMinion, updateMinion, deleteMinion } = require(); 
+const {
+  getAllFromDatabase,
+  getFromDatabaseById,
+  addToDatabase,
+  updateInstanceInDatabase,
+  deleteFromDatabasebyId,
+} = require('../db.js'); 
+
 const router = express.Router(); 
 
-router.get('/minions', getMinions); 
-router.post('/minions', createMinion); 
-router.get('/minions/:id', getMinion); 
-router.put('/minions/id', updateMinion); 
-router.delete('/minions/:id', deleteMinion);
+router.get('/minions', getAllFromDatabase); 
+router.post('/minions', addToDatabase); 
+router.get('/minions/:id', getFromDatabaseById); 
+router.put('/minions/id', updateInstanceInDatabase); 
+router.delete('/minions/:id', deleteFromDatabasebyId);
 
 module.exports = router; 
