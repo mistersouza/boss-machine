@@ -1,11 +1,11 @@
 const express = require('express'); 
 
-const { createMeeting, getAllFromDatabase, deleteAllFromDatabase } = require('../db.js'); 
+const { getMeetings, newMeeting, deleteMeetings } = require('../controllers/meetings'); 
 
 const router = express.Router();
 
-router.get('/meetings', getAllFromDatabase);
-router.post('/meetings', createMeeting);
-router.delete('/meetings', deleteAllFromDatabase);
+router.get('/', getMeetings);
+router.post('/', newMeeting);
+router.delete('/', deleteMeetings);
 
 module.exports = router; 

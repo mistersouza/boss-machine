@@ -1,16 +1,13 @@
 
-const checkMillionDollarIdea = ((req, res, next) => {
+const isMillionDollarIdea = (req, res, next) => {
     const {numWeeks, weeklyRevenue } = req.body
     
-    const millionDollarIdea = numWeeks * weeklyRevenue >= 1000000
-    if (millionDollarIdea) {
-        req.millionDollarIdea = millionDollarIdea;
-        next(); 
+    const millionDollarIdea = Number(numWeeks) * Number(weeklyRevenue) >= 1000000
+    if (!numWeeks || ! weeklyRevenue || isNaN(millionDollarIdea) || !millionDollarIdea) {
+        res.status(400).send(); 
     } else {
-        res.status(404).send({ message: 'Think bigger' })
+        next(); 
     }
+}
 
-     
-})
-
-module.checkMillionDollarIdea; 
+module.exports = isMillionDollarIdea; 
