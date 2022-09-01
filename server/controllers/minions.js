@@ -16,7 +16,7 @@ const getMinion = (req, res, next, id) => {
     }
 }
 
-const getAllMinions = (req, res, next) => {
+const getMinions = (req, res, next) => {
     res.send(getAllFromDatabase('minions')); 
 }
 
@@ -49,7 +49,7 @@ const deleteMinion = (req, res, next) => {
 module.exports = {
     getMinion, 
     sendMinion,
-    getAllMinions,
+    getMinions,
     createMinion,
     updateMinion,
     deleteMinion

@@ -7,13 +7,12 @@ const {
 } = require('../db.js');
 
 const getIdea = (req, res, next, id) => {
-    const idea = getFromDatabaseById(id); 
-
+     const idea = getFromDatabaseById('ideas', id);
     if (idea) {
-        req.idea = idea; 
-        next(); 
+        req.idea = idea;
+        next();
     } else {
-        res.status(404).send(); 
+        res.status(404).send();
     }
 }
 
@@ -36,13 +35,13 @@ const updateIdea = (req, res, next) => {
 }
 
 const deleteIdea = (req, res, next) => {
-    const deletedIdea = deleteFromDatabasebyId('ideas'); 
-    if (deletedIdea) {
-        res.status(204); 
+    const deletedMinion = deleteFromDatabasebyId('ideas', req.params.ideaId);
+    if (deletedMinion) {
+        res.status(204);
     } else {
-        res.status(500); 
+        res.status(500);
     }
-    res.send(); 
+    res.send();
 }
 
 

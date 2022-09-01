@@ -479,7 +479,7 @@ describe('/api/ideas routes', function() {
 
 describe('checkMillionDollarIdea middleware', function() {
 
-  const checkMillionDollarIdea = require('../server/checkMillionDollarIdea');
+  const checkMillionDollarIdea = require('../server/middleware/checkMillionDollarIdea.js');
 
   let req;
   let response;

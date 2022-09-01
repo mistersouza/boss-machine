@@ -2,14 +2,16 @@ const express = require('express');
 
 const { getIdea, getIdeas, createIdea, sendIdea, updateIdea, deleteIdea } = require('../controllers/ideas.js'); 
 
+const checkMillionDollarIdea = require('../middleware/checkMillionDollarIdea.js'); 
+
 const router = express.Router(); 
 
-router.param('/ideas', getIdea); 
+router.param('ideaId', getIdea); 
 
-router.get('/ideas', getIdeas);
-router.post('/ideas', createIdea);
-router.get('/ideas/:id', sendIdea);
-router.put('/ideas/:id', updateIdea);
-router.delete('/ideas/:id', deleteIdea);
+router.get('/', getIdeas);
+router.post('/', checkMillionDollarIdea, createIdea);
+router.get('/:ideaId', sendIdea);
+router.put('/:ideaId', updateIdea);
+router.delete('/:ideaId', deleteIdea);
 
 module.exports = router; 

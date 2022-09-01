@@ -1,13 +1,13 @@
 const express = require('express'); 
 
 
-const { getAllMinions, createMinion, deleteMinion, updateMinion, getMinion, sendMinion  } = require('../controllers/minions'); 
+const { getMinions, createMinion, deleteMinion, updateMinion, getMinion, sendMinion  } = require('../controllers/minions'); 
 
 const router = express.Router(); 
 
-router.param('minions', getMinion);
+router.param('minionId', getMinion);
 
-router.get('/', getAllMinions); 
+router.get('/', getMinions); 
 router.post('/', createMinion); 
 router.get('/:minionId', sendMinion); 
 router.put('/:minionId', updateMinion); 
